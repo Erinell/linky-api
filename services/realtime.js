@@ -14,7 +14,6 @@ async function getRealtime() {
   }
 }
 
-
 async function init() {
   const infos = utils.getTeleInfos();
   for (var info in infos) {
@@ -36,7 +35,6 @@ async function create() {
 }
 
 async function update(content) {
-
   const result = await query(`UPDATE realtime SET Date=CURRENT_TIMESTAMP, Valeur="${content.valeur}" WHERE Nom="${content.nom}"`);
 
   let message = `Impossible de mettre à jour ${content.nom}.`;
