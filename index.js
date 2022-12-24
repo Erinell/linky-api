@@ -1,3 +1,4 @@
+const updater = require("./update");
 const express = require("express");
 const app = express();
 const cors = require('cors');
@@ -7,6 +8,8 @@ const serialPort = require("./handlers/SerialCom.js");
 const Tester = require("./handlers/Tester.js");
 const config = require('./config');
 const args = process.argv.slice(2);
+
+updater.initAutoUpdate();
 
 if (args[0] == "test") {
   console.log("Démarrage en mode test.");

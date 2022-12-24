@@ -11,6 +11,7 @@
   "author": "Cédric Debois <ceddebois@gmail.com>",
   "license": "ISC",
   "dependencies": {
+    "auto-git-update": "^2.1.2",
     "cors": "^2.8.5",
     "dateformat": "^5.0.3",
     "dotenv": "^16.0.3",
