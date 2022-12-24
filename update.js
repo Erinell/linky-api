@@ -4,7 +4,7 @@ module.exports = {
     initAutoUpdate: function () {
         const config = {
             repository: 'https://github.com/Erinell/linky-api',
-            fromReleases: true,
+            fromReleases: false,
             tempLocation: '../tmp/',
             ignoreFiles: ['config.js'],
             executeOnComplete: 'npm start',
