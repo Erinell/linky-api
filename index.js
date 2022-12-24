@@ -11,6 +11,7 @@ const args = process.argv.slice(2);
 
 updater.initAutoUpdate();
 
+// tester
 if (args[0] == "test") {
   console.log("Démarrage en mode test.");
   const tester = new Tester();
