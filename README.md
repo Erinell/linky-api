@@ -28,4 +28,4 @@ serial        | Paramètres serial de connexion au compteur
 
     $ yarn start
     ou
-    $ npm install
+    $ npm start
