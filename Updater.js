@@ -23,18 +23,4 @@ let main = function() {
     }
 }
 
-module.exports = {
-    initAutoUpdate: function () {
-        const config = {
-            repository: 'https://github.com/Erinell/linky-api',
-            fromReleases: false,
-            tempLocation: '../tmp/',
-            ignoreFiles: ['config.js'],
-            executeOnComplete: 'npm start',
-            exitOnComplete: true
-        }
-
-        const updater = new AutoGitUpdate(config);
-        updater.autoUpdate();
-    }
-}
+module.exports = main;

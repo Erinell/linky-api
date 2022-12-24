@@ -1,4 +1,4 @@
-const updater = require("./update");
+const Updater = require("./Updater");
 const express = require("express");
 const app = express();
 const cors = require('cors');
@@ -9,7 +9,8 @@ const Tester = require("./handlers/Tester.js");
 const config = require('./config');
 const args = process.argv.slice(2);
 
-updater.initAutoUpdate();
+const update = new Updater();
+update.checkUpdate();
 
 // tester
 if (args[0] == "test") {
