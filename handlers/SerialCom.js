@@ -191,8 +191,6 @@ let main = function (device, options) {
         minute[0] = new Date().getMinutes();
         if (minute[0] % config.saveFrequency == 0 && minute[1] != minute[0]) {
           if (to_save.find(id => id == ligne["ID"])) {
-            //SQL.send("FREQUENCE", ligne["ID"], info[ligne["ID"]].description, ligne["valeur"], info[ligne["ID"]].unite);
-            // console.log({ trame: ligne["ID"], valeur: ligne["valeur"] });
             trame.add({ trame: ligne["ID"], valeur: ligne["valeur"] });
             check_save += 1;
           }
@@ -206,8 +204,8 @@ let main = function (device, options) {
     parser.on('close', function () {
 
     });
-    parser.on('error', function (err) {
-
+    serial.on('error', function (err) {
+      console.log(err);
     });
   };
   self.restart = function () {
