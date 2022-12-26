@@ -22,6 +22,7 @@ let main = function() {
         if(current.upToDate) return console.log(`API à jour (${current.currentVersion})`);
     
         console.log(`La mise à jour ${current.remoteVersion} est disponible (version actuelle : ${current.currentVersion})`);
+        console.log(`Installation de la mise à jour...`);
         updater.autoUpdate();
     }
 }
