@@ -4,8 +4,6 @@ const app = express();
 const cors = require('cors');
 const trameRouter = require("./routes/trame");
 const defaultRouter = require("./routes/default");
-
-const Tester = require("./handlers/Tester.js");
 const config = require('./config');
 const args = process.argv.slice(2);
 
@@ -14,6 +12,7 @@ update.checkUpdate();
 
 if (args[0] == "test") {
   console.log("Démarrage en mode test.");
+  const Tester = require("./handlers/Tester.js");
   const tester = new Tester();
   tester.start();
 } else {
