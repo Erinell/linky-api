@@ -29,3 +29,9 @@ serial        | Paramètres serial de connexion au compteur
     $ yarn start
     ou
     $ npm start
+
+Il est possible de lancer en mode test pour simuler la connexion au Linky mais qui envoi des données aléatoires dans une autre base de données (voir `.env` et `config.js`).
+
+    $ yarn start test
+    ou
+    $ npm start test
