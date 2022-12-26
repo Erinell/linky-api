@@ -4,7 +4,7 @@ const app = express();
 const cors = require('cors');
 const trameRouter = require("./routes/trame");
 const defaultRouter = require("./routes/default");
-const serialPort = require("./handlers/SerialCom.js");
+
 const Tester = require("./handlers/Tester.js");
 const config = require('./config');
 const args = process.argv.slice(2);
@@ -12,12 +12,13 @@ const args = process.argv.slice(2);
 const update = new Updater();
 update.checkUpdate();
 
-// test
+// test V1.0.3
 if (args[0] == "test") {
   console.log("Démarrage en mode test.");
   const tester = new Tester();
   tester.start();
 } else {
+  const serialPort = require("./handlers/SerialCom.js");
   const serialport = new serialPort(config.serial.port, config.serial.options);
   serialport.start();
 }

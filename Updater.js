@@ -8,17 +8,20 @@ let main = function() {
         tempLocation: '../tmp/',
         ignoreFiles: ['config.js'],
         executeOnComplete: 'npm start',
-        exitOnComplete: true
+        exitOnComplete: true,
+        logConfig: {
+            logGeneral:  false,
+        }
     };
     let updater = new AutoGitUpdate(config);
     self.start = function() {
 
     }
-    self.checkUpdate = function (){
-        const current = updater.compareVersions();
-        if(current.upToDate) return console.log(`API à jour (${currentVersion})`);
+    self.checkUpdate = async function (){
+        const current = await updater.compareVersions();
+        if(current.upToDate) return console.log(`API à jour (${current.currentVersion})`);
     
-        console.log(`La mise à jour ${remoteVersion} est disponible (version actuelle : ${currentVersion})`);
+        console.log(`La mise à jour ${current.remoteVersion} est disponible (version actuelle : ${current.currentVersion})`);
         updater.autoUpdate();
     }
 }
