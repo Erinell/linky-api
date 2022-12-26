@@ -12,7 +12,6 @@ const args = process.argv.slice(2);
 const update = new Updater();
 update.checkUpdate();
 
-// test V1.0.6
 if (args[0] == "test") {
   console.log("Démarrage en mode test.");
   const tester = new Tester();
