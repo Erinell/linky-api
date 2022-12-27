@@ -3,7 +3,7 @@
 Serveur API pour collecter les données du compteur Linky et stocker dans une base de donnée.
 La communication s'effectue via la sortie TIC (Télé-Information Client) du compteur Linky.
 
-![T|200x100,20%](https://github.com/Erinell/linky-api/blob/master/docs/img/LinkyToRpi.jpg?raw=true)
+<img src="https://github.com/Erinell/linky-api/blob/master/docs/img/LinkyToRpi.jpg?raw=true"  width="80%">
 
 ---
 ## Requirements
