@@ -1,11 +1,21 @@
 # Linky-API
 
 Serveur API pour collecter les données du compteur Linky et stocker dans une base de donnée.
+La communication s'effectue via la sortie TIC (Télé-Information Client) du compteur Linky.
+
+![T|200x100,20%](https://github.com/Erinell/linky-api/blob/master/docs/img/LinkyToRpi.jpg?raw=true)
 
 ---
 ## Requirements
-
+#### Software
 Pour le développement, vous n'aurez besoin que de Node.js et d'un gestionnaire de packages tel que yarn ou npm.
+
+#### Hardware
+- Raspberry Pi (Zero W / 3B+ / 4B)
+- Compteur Linky
+- Circuit de comunication TIC (voir schéma)
+
+![test](https://github.com/Erinell/linky-api/blob/master/docs/img/Schema.png?raw=true)
 
 ## Installation
 
