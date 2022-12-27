@@ -7,10 +7,10 @@ La communication s'effectue via la sortie TIC (Télé-Information Client) du com
 
 ---
 ## Requirements
-#### Software
+### Software
 Pour le développement, vous n'aurez besoin que de Node.js et d'un gestionnaire de packages tel que yarn ou npm.
 
-#### Hardware
+### Hardware
 - Raspberry Pi (Zero W / 3B+ / 4B)
 - Compteur Linky
 - Circuit de comunication TIC (voir schéma)
