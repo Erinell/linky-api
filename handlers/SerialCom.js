@@ -205,6 +205,7 @@ let main = function (device, options) {
 
     });
     serial.on('error', function (err) {
+      console.log("Impossible de se connecter au compteur :");
       console.log(err);
     });
   };
