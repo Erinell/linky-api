@@ -13,7 +13,7 @@ Pour le développement, vous n'aurez besoin que de Node.js et d'un gestionnaire 
 ### Hardware
 - Raspberry Pi (Zero W / 3B+ / 4B)
 - Compteur Linky
-- Circuit de comunication TIC (voir schéma)
+- Circuit de communication TIC (voir schéma)
 
 ![test](https://github.com/Erinell/linky-api/blob/master/docs/img/Schema.png?raw=true)
 
