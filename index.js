@@ -9,6 +9,7 @@ const args = process.argv.slice(2);
 
 const update = new Updater();
 update.checkUpdate();
+update.startCoroutine();
 
 if (args[0] == "test") {
   console.log("Démarrage en mode test.");
