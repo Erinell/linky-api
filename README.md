@@ -10,12 +10,14 @@ La communication s'effectue via la sortie TIC (Télé-Information Client) du com
 ### Software
 Pour le développement, vous n'aurez besoin que de Node.js et d'un gestionnaire de packages tel que yarn ou npm.
 
+![Grafana](https://github.com/Erinell/linky-api/blob/master/docs/img/Grafana.png?raw=true)
+![Grafana1](https://github.com/Erinell/linky-api/blob/master/docs/img/Grafana1.png?raw=true)
 ### Hardware
 - Raspberry Pi (Zero W / 3B+ / 4B)
 - Compteur Linky
 - Circuit de communication TIC (voir schéma)
 
-![test](https://github.com/Erinell/linky-api/blob/master/docs/img/Schema.png?raw=true)
+![schema](https://github.com/Erinell/linky-api/blob/master/docs/img/Schema.png?raw=true)
 
 ## Installation
 
