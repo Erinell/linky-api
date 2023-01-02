@@ -47,3 +47,102 @@ Il est possible de lancer en mode test pour simuler la connexion au Linky mais q
     $ yarn start test
     ou
     $ npm start test
+
+## API
+* [GET /](#a)
+* [GET /trame](#b)
+* [GET /trame?trame=IINST1](#b)
+
+##### Requête
+<a name="a"/>
+
+`GET /` & `GET /realtime`
+
+    curl -i -H 'Accept: application/json' http://localhost:3000/
+    curl -i -H 'Accept: application/json' http://localhost:3000/realtime
+
+##### Réponse
+
+    {
+        "data": [{
+            "Date": "YYYY-MM-ddThh:mm:ss.000Z",
+            "Nom": "INDEX",
+            "Description": "Description",
+            "Valeur": "0",
+            "Unite": ""
+        }],
+        "meta": {
+            "length": 0
+        }
+    }
+
+##### Requête
+<a name="b"/>
+
+`GET /trame`
+
+    curl -i -H 'Accept: application/json' http://localhost:3000/trame
+
+##### Réponse
+
+    {
+        "message": "Veuillez indiquer une trame valide. (/trame?trame=...)"
+    }
+
+##### Requête
+<a name="c"/>
+
+`GET /trame?trame=IINST1`
+
+    curl -i -H 'Accept: application/json' http://localhost:3000/trame?trame=IINST1
+
+##### Réponse
+
+    {
+        "data": [{
+            "Date": "YYYY-MM-ddThh:mm:ss.000Z",
+            "Valeur": 0
+        }],
+        "meta": {
+            "length": 0,
+            "message": "0 données."
+        }
+    }
+
+##### Requête
+
+`GET /trame?trame=IINST1&dateFrom=jj/MM/YYYY%20HH:mm:ss`
+
+    curl -i -H 'Accept: application/json' http://localhost:3000/trame?trame=IINST1&dateFrom=jj/MM/YYYY%20HH:mm:ss
+
+##### Réponse
+    {
+        "data": [{
+            "Date": "YYYY-MM-ddThh:mm:ss.000Z",
+            "Valeur": 0
+        }],
+        "meta": {
+            "length": 0,
+            "message": "20 données de IINST1 entre jj/MM/YYYY HH:mm:ss et maintenant.",
+            "trame": "IINST1"
+        }
+    }
+
+##### Requête
+
+`GET /trame?trame=IINST1&dateFrom=jj/MM/YYYY%20HH:mm:ss&dateTo=jj/MM/YYYY%20HH:mm:ss`
+
+    curl -i -H 'Accept: application/json' http://localhost:3000/trame?trame=IINST1&dateFrom=jj/MM/YYYY%20HH:mm:ss&dateTo=jj/MM/YYYY%20HH:mm:ss
+
+##### Réponse
+    {
+        "data": [{
+            "Date": "YYYY-MM-ddThh:mm:ss.000Z",
+            "Valeur": 0
+        }],
+        "meta": {
+            "length": 0,
+            "message": "20 données de IINST1 entre jj/MM/YYYY HH:mm:ss et jj/MM/YYYY HH:mm:ss.",
+            "trame": "IINST1"
+        }
+    }
