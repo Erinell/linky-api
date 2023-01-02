@@ -16,7 +16,7 @@ let main = function () {
     };
     let updater = new AutoGitUpdate(config);
     let coroutine = new CronJob(
-        '0 */1 * * * *', // toutes les heures h-0
+        '0 0 */1 * * *', // toutes les heures h-0
         () => self.checkUpdate()
     );
     self.start = function () {
