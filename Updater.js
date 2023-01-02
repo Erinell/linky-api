@@ -29,7 +29,7 @@ let main = function () {
     // @param {Boolean} log - Afficher dans la console
     self.checkUpdate = async function (log = true) {
         const current = await updater.compareVersions();
-        if (current.upToDate && log) return console.log(`API à jour (${current.currentVersion})`);
+        if (current.upToDate && log) return console.log(`[${new Date().toLocaleString()}] API à jour (${current.currentVersion})`);
         if (current.upToDate && !log) return false;
 
         console.log(`La mise à jour ${current.remoteVersion} est disponible (version actuelle : ${current.currentVersion})`);
