@@ -30,7 +30,7 @@ module.exports = {
       const dateTo = content.dateTo != null ? `'${new Date(content.dateTo).toISOString()}'` : 'CURRENT_TIMESTAMP';
       const data = await query(`SELECT * FROM ${content.trame} WHERE Date BETWEEN '${new Date(content.dateFrom).toISOString()}' AND ${dateTo}`);
 
-      if (data.length >= 0) message = `${data.length} données de ${content.trame} entre ${content.dateFrom} et ${content.dateTo}.`;
+      if (data.length >= 0) message = `${data.length} données de ${content.trame} entre ${content.dateFrom} et ${dateTo ? dateTo : 'maintenant'}.`;
 
       length = data.length;
       meta = { length, message, trame: content.trame };
