@@ -51,8 +51,9 @@ Il est possible de lancer en mode test pour simuler la connexion au Linky mais q
 ## API
 * [GET /](#a)
 * [GET /trame](#b)
-* [GET /trame?trame=IINST1](#b)
-
+* [GET /trame?trame=](#c)
+* [GET /trame?trame=&dateFrom=](#d)
+* [GET /trame?trame=&dateFrom=&dateTo=](#e)
 ##### Requête
 <a name="a"/>
 
@@ -110,6 +111,7 @@ Il est possible de lancer en mode test pour simuler la connexion au Linky mais q
     }
 
 ##### Requête
+<a name="d"/>
 
 `GET /trame?trame=IINST1&dateFrom=jj/MM/YYYY%20HH:mm:ss`
 
