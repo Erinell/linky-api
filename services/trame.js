@@ -1,4 +1,4 @@
-const { init, query } = require('./database');
+const { query } = require('./database');
 const utils = require('../utils');
 const config = require('../config');
 
@@ -54,7 +54,7 @@ module.exports = {
     return { message };
   },
   create: async function (table) {
-    const result = await query(`CREATE TABLE IF NOT EXISTS ${table}(Date DATETIME, Valeur INT(12));`);
+    const result = await query(`CREATE TABLE IF NOT EXISTS ${table}(Date DATETIME, Valeur INT(12), PRIMARY KEY (Date));`);
     let message = "Impossible d'ajouter la trame " + table;
 
     if (result.affectedRows) {
