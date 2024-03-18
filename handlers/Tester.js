@@ -1,17 +1,11 @@
 const realtime = require('../services/realtime');
 const trame = require('../services/trame');
-const config = require('../config');
-const { formatLine, getTeleInfos } = require("../utils");
+const { formatLine, getTeleInfos, config } = require("../utils");
 
-const to_save = ["PAPP", "BASE", "IINST1", "IINST2", "IINST3"];
 let minute = [null, null];
 let check_save = 0;
 const infos = getTeleInfos();
 
-realtime.create();
-to_save.forEach(table => {
-  trame.create(table);
-})
 
 let main = function () {
   let self = this;
@@ -20,6 +14,10 @@ let main = function () {
   let currentIndex = 0;
   self.start = function () {
     coroutine = setInterval(this.fetch, delay);
+    realtime.create();
+    config.compteur.save.forEach(table => {
+      trame.create(table);
+    })
   };
 
   self.getData = function () {
@@ -63,32 +61,32 @@ let main = function () {
 
   self.fetch = function () {
     const lines = self.getData();
-    
     let currentLine = lines[currentIndex];
     self.compute(currentLine);
-    currentIndex ++;
-    if(currentIndex >= lines.length) {
+    currentIndex++;
+    if (currentIndex >= lines.length) {
       currentIndex = 0;
     }
   }
 
-  self.compute = function(line) {
+  self.compute = function (line) {
     let ligne = new Array();
     if (line.split(" ").length === 3 && infos[line.split(" ")[0]]) {
       ligne["ID"] = formatLine(line.split(" ")[0]);
       ligne["valeur"] = formatLine(line.split(" ")[1]);
       ligne["checksum"] = formatLine(line.split(" ")[2]);
-      
-      realtime.update({ nom: ligne["ID"], valeur: ligne["valeur"] });
+
+      if (config.compteur.save_realtime.find(id => id == ligne["ID"])) {
+        realtime.update({ nom: ligne["ID"], valeur: ligne["valeur"] });
+      }
+
       minute[0] = new Date().getMinutes();
-      if (minute[0] % config.saveFrequency == 0 && minute[1] != minute[0]) {
-        if (to_save.find(id => id == ligne["ID"])) {
-          //SQL.send("FREQUENCE", ligne["ID"], info[ligne["ID"]].description, ligne["valeur"], info[ligne["ID"]].unite);
-          // console.log({ trame: ligne["ID"], valeur: ligne["valeur"] });
+      if (minute[0] % config.compteur.save_frequency == 0 && minute[1] != minute[0]) {
+        if (config.compteur.save.find(id => id == ligne["ID"])) {
           trame.add({ trame: ligne["ID"], valeur: ligne["valeur"] });
           check_save += 1;
         }
-        if (check_save == to_save.length) {
+        if (check_save == config.compteur.save.length) {
           check_save = 0;
           minute[1] = minute[0];
         }
@@ -96,7 +94,7 @@ let main = function () {
     }
   };
   self.stop = function () {
-    if(!coroutine) return console.log("Rien ne tourne.");
+    if (!coroutine) return console.log("Rien ne tourne.");
     clearInterval(coroutine);
   }
 

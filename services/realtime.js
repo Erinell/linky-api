@@ -1,9 +1,9 @@
 const { query } = require('./database');
-const utils = require('../utils');
+const {emptyOrRows, getTeleInfos, config} = require('../utils');
 
 async function getRealtime() {
   const rows = await query(`SELECT * FROM realtime`);
-  const data = utils.emptyOrRows(rows);
+  const data = emptyOrRows(rows);
   const length = data.length;
 
   const meta = { length };
@@ -15,9 +15,11 @@ async function getRealtime() {
 }
 
 async function init() {
-  const infos = utils.getTeleInfos();
+  const infos = getTeleInfos();
   for (var info in infos) {
-    await query(`INSERT INTO realtime(Date, Nom, Description, Unite) VALUES (CURRENT_TIMESTAMP, '${infos[info].id}', '${infos[info].description}', '${infos[info].unite}') ON DUPLICATE KEY UPDATE, Date=CURRENT_TIMESTAMP`);
+    if(config.compteur.save_realtime.find(id => id == info)) {
+      await query(`INSERT INTO realtime(Date, Nom, Description, Unite) VALUES (CURRENT_TIMESTAMP, '${infos[info].id}', '${infos[info].description}', '${infos[info].unite}') ON DUPLICATE KEY UPDATE Date=CURRENT_TIMESTAMP`);
+    }
   }
 }
 
