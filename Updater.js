@@ -7,7 +7,7 @@ let main = function () {
         repository: 'https://github.com/Erinell/linky-api',
         fromReleases: false,
         tempLocation: '../tmp/',
-        ignoreFiles: ['config.js'],
+        ignoreFiles: ['config.yml'],
         executeOnComplete: 'npm start',
         exitOnComplete: true,
         logConfig: {
@@ -34,7 +34,8 @@ let main = function () {
 
         console.log(`[${new Date().toLocaleString()}] La mise à jour ${current.remoteVersion} est disponible (version actuelle : ${current.currentVersion})`);
         console.log(`Installation de la mise à jour...`);
-        updater.autoUpdate();
+        await updater.autoUpdate();
+        console.log(`[${new Date().toLocaleString()}] Mise à jour terminée.`)
     }
     self.startCoroutine = function () {
         coroutine.start();
