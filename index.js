@@ -8,12 +8,15 @@ const { config } = require("./utils.js");
 const { init } = require('./services/database.js');
 const args = process.argv.slice(2);
 
-const update = new Updater();
-update.checkUpdate();
-update.startCoroutine();
 
 run();
+
 if (!args.includes("noAPI")) startAPI();
+if (!args.includes("noUpdate")) {
+  const update = new Updater();
+  update.checkUpdate();
+  update.startCoroutine();
+}
 
 async function run() {
   if (args[0] == "test") {
