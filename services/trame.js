@@ -1,12 +1,11 @@
 const { query } = require('./database');
-const utils = require('../utils');
-const config = require('../config');
+const {emptyOrRows, getOffset, config} = require('../utils');
 
 module.exports = {
   getMultiple: async function (trame = "BASE", page) {
-    const offset = page ? utils.getOffset(page, config.listPerPage) : null;
+    const offset = page ? getOffset(page, config.list_per_page) : null;
     const rows = await query(`SELECT Date, Valeur FROM ${trame} ${offset != null && offset >= 0 ? `LIMIT ${offset},${config.listPerPage}` : ''}`);
-    const data = utils.emptyOrRows(rows);
+    const data = emptyOrRows(rows);
     const length = data.length;
     const meta = { page, length };
 
