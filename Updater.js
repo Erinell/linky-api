@@ -16,7 +16,7 @@ let main = function () {
     };
     let updater = new AutoGitUpdate(config);
     let coroutine = new CronJob(
-        '0 0 */1 * * *', // toutes les heures h-0
+        '0 * * * *', // toutes les heures h-0
         () => self.checkUpdate()
     );
     self.start = function () {
@@ -32,7 +32,7 @@ let main = function () {
         if (current.upToDate && log) return console.log(`[${new Date().toLocaleString()}] API à jour (${current.currentVersion})`);
         if (current.upToDate && !log) return false;
 
-        console.log(`La mise à jour ${current.remoteVersion} est disponible (version actuelle : ${current.currentVersion})`);
+        console.log(`[${new Date().toLocaleString()}] La mise à jour ${current.remoteVersion} est disponible (version actuelle : ${current.currentVersion})`);
         console.log(`Installation de la mise à jour...`);
         updater.autoUpdate();
     }
