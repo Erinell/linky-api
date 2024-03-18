@@ -1,0 +1,27 @@
+serial:
+  port: /dev/ttyUSB0
+  options:
+    baudrate: 1200
+    data_bits: 7
+    parity: even
+
+compteur:
+  save_frequency: 5
+  save: [PAPP, BASE, IINST1, IINST2, IINST3]
+  save_realtime: [PAPP, PMAX, BASE, IINST1, IINST2, IINST3]
+
+api:
+  server_port: 3000
+  list_per_page: 100
+
+database:
+  host: <your-ip>
+  user: <your-user>
+  password: <your-passwd>
+  database: compteur
+
+database_test:
+  host: <your-ip>
+  user: <your-user>
+  password: <your-passwd>
+  database: compteur2
