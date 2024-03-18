@@ -1,3 +1,7 @@
+const fs = require('fs');
+const YAML = require('yaml');
+const config = YAML.parse(fs.readFileSync("config.yml", 'utf-8'));
+
 function getOffset(currentPage = 1, listPerPage) {
   return (currentPage - 1) * [listPerPage];
 }
@@ -172,5 +176,6 @@ module.exports = {
         unite: ""
       }
     }
-  }
+  },
+  config
 }
