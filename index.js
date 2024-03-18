@@ -12,8 +12,6 @@ const update = new Updater();
 update.checkUpdate();
 update.startCoroutine();
 
-console.log(args);
-
 run();
 if (!args.includes("noAPI")) startAPI();
 

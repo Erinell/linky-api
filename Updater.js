@@ -8,7 +8,7 @@ let main = function () {
         fromReleases: false,
         tempLocation: '../tmp/',
         ignoreFiles: ['config.yml'],
-        executeOnComplete: 'npm start',
+        executeOnComplete: 'npm run test',
         exitOnComplete: true,
         logConfig: {
             logGeneral: false,
@@ -16,7 +16,7 @@ let main = function () {
     };
     let updater = new AutoGitUpdate(config);
     let coroutine = new CronJob(
-        '0 * * * *', // toutes les heures h-0
+        '* * * * *', // toutes les heures h-0
         () => self.checkUpdate()
     );
     self.start = function () {
@@ -39,6 +39,7 @@ let main = function () {
     }
     self.startCoroutine = function () {
         coroutine.start();
+        console.log(coroutine.nextDate());
     }
     self.stopCoroutine = function () {
         coroutine.stop();
