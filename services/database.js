@@ -1,17 +1,15 @@
 const mysql = require('mysql2');
-const config = require('../config');
 
 let pool;
 let promisePool;
 module.exports = {
-  init: async function(){
-    pool = await mysql.createPool(config.db);
+  init: async function (config) {
+    pool = await mysql.createPool(config);
     promisePool = pool.promise();
   },
-  query: async function(sql, params) {
-    if(!pool || !promisePool) await module.exports.init();
+  query: async function (sql, params) {
     try {
-      const [results, ] = await promisePool.query(sql, params);
+      const [results,] = await promisePool.query(sql, params);
       return results;
     } catch (error) {
       return error;
