@@ -8,7 +8,6 @@ const { config } = require("./utils.js");
 const { init } = require('./services/database.js');
 const args = process.argv.slice(2);
 
-
 run();
 
 if (!args.includes("noAPI")) startAPI();

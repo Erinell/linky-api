@@ -39,7 +39,6 @@ let main = function () {
     }
     self.startCoroutine = function () {
         coroutine.start();
-        console.log(coroutine.nextDate());
     }
     self.stopCoroutine = function () {
         coroutine.stop();
