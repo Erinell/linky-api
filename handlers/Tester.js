@@ -1,9 +1,12 @@
 const realtime = require('../services/realtime');
 const trame = require('../services/trame');
+const boot = require('../services/boot');
 const { formatLine, getTeleInfos, config } = require("../utils");
 
 let minute = [null, null];
 let check_save = 0;
+let is_boot = false;
+let boot_count = 0;
 const infos = getTeleInfos();
 
 
@@ -15,6 +18,7 @@ let main = function () {
   self.start = function () {
     coroutine = setInterval(this.fetch, delay);
     realtime.create();
+    boot.create();
     config.compteur.save.forEach(table => {
       trame.create(table);
     })
@@ -75,6 +79,14 @@ let main = function () {
       ligne["ID"] = formatLine(line.split(" ")[0]);
       ligne["valeur"] = formatLine(line.split(" ")[1]);
       ligne["checksum"] = formatLine(line.split(" ")[2]);
+
+      if (config.compteur.save_boot.find(id => id == ligne["ID"]) && !is_boot) {
+        boot.update({ nom: ligne["ID"], valeur: ligne["valeur"] });
+        boot_count++;
+        if(boot_count == config.compteur.save_boot.length) {
+          is_boot = true;
+        }
+      }
 
       if (config.compteur.save_realtime.find(id => id == ligne["ID"])) {
         realtime.update({ nom: ligne["ID"], valeur: ligne["valeur"] });
