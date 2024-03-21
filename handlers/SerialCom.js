@@ -35,7 +35,7 @@ let main = function (device, options) {
         if (config.compteur.save_boot.find(id => id == ligne["ID"]) && !is_boot) {
           boot.update({ nom: ligne["ID"], valeur: ligne["valeur"] });
           boot_count++;
-          if(boot_count == config.compteur.save_boot.length) {
+          if(boot_count > config.compteur.save_boot.length) {
             is_boot = true;
           }
         }

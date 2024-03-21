@@ -44,6 +44,7 @@ let main = function () {
 
     const trames = [
       `ADCO ${ADCO} L`,
+      `OPTARIF ${OPTARIF} 0`,
       `ISOUSC ${ISOUSC} <`,
       `BASE ${BASE} 6`,
       `PTEC ${PTEC} $`,
@@ -83,7 +84,7 @@ let main = function () {
       if (config.compteur.save_boot.find(id => id == ligne["ID"]) && !is_boot) {
         boot.update({ nom: ligne["ID"], valeur: ligne["valeur"] });
         boot_count++;
-        if(boot_count == config.compteur.save_boot.length) {
+        if(boot_count > config.compteur.save_boot.length) {
           is_boot = true;
         }
       }
