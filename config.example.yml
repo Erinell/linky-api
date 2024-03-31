@@ -9,6 +9,7 @@ compteur:
   save_frequency: 5
   save: [PAPP, BASE, IINST1, IINST2, IINST3]
   save_realtime: [PAPP, PMAX, BASE, IINST1, IINST2, IINST3]
+  mode: 0 # 0: standard / 1: historique
 
 api:
   server_port: 3000
