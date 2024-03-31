@@ -3,7 +3,7 @@ const { ReadlineParser } = require('@serialport/parser-readline');
 const realtime = require('../services/realtime');
 const trame = require('../services/trame');
 const boot = require('../services/boot');
-const { formatLine, getTeleInfos } = require("../utils")
+const { formatLine, getTeleInfos, config } = require("../utils")
 
 let minute = [null, null];
 let check_save = 0;
